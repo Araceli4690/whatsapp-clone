@@ -20,6 +20,9 @@ function Sidebar() {
                 data: doc.data(),
             }))
         ))
+        return () => {
+            unsubsribe();
+        }
     }, [])
 
     return (
