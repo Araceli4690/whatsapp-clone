@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '@mui/material';
 import './style.css'
+import { auth, provider } from '../../firebase';
 
 function Login() {
     const signIn = () => {
@@ -18,7 +19,7 @@ function Login() {
                     <h1>Sign in to WhatsApp</h1>
                 </div>
                 <Button onClick={signIn}>
-                    Sign in with Google
+                    Sign In With Google
                 </Button>
             </div>
         </div>
