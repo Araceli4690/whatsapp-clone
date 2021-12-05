@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import reducer, { initialState } from "./reducer";
+import { StateProvider } from "./StateProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/*data layer that surronds the app -> allows to push info into data layer and pull from any component */}
+    <StateProvider initialState={initialState} reducer={reducer}>
+      <App />
+    </StateProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
