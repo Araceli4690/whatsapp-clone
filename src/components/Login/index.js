@@ -5,7 +5,10 @@ import { auth, provider } from '../../firebase';
 
 function Login() {
     const signIn = () => {
-
+        //signin with provider (googleAuth from firebase.js)
+        auth.signInWithPopup(provider)
+            .then((result) => console.log(result))
+            .catch((error) => alert(error.message));
     };
 
     return (
