@@ -14,14 +14,15 @@ function Sidebar() {
 
     useEffect(() => {
         //on any changes run the code and reutrn latest snapshot
-        db.collection("rooms").onSnapshot((snapshot) => setRooms(
+        const unsubscribe = db.collection("rooms").onSnapshot((snapshot) => setRooms(
             snapshot.docs.map((doc) => ({
                 id: doc.id,
                 data: doc.data(),
             }))
         ))
         return () => {
-            unsubsribe();
+            //always detach realtime listener after it is done using it
+            unsubscribe();
         }
     }, [])
 
