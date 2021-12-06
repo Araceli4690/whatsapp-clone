@@ -5,12 +5,14 @@ import Chat from './components/Chat';
 import Login from './components/Login';
 import { Route, Switch } from "react-router-dom";
 import { BrowserRouter as Router } from 'react-router-dom';
+import { useStateValue } from './StateProvider';
 
 
 
 function App() {
-  //setting up user auth with google
-  const [user, setUser] = useState(null);
+  //pull user from data layer
+  const [{ user }, dispatch] = useStateValue();
+
   return (
     <div className="app">
       {/*if there is no user logged in show Login screen */}

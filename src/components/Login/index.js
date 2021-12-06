@@ -2,12 +2,25 @@ import React from 'react'
 import { Button } from '@mui/material';
 import './style.css'
 import { auth, provider } from '../../firebase';
+import { useStateValue } from '../../StateProvider';
+import { actionTypes } from '../../reducer';
 
 function Login() {
+    //pull from data layer
+    const [{ }, dispatch] = useStateValue();
+
     const signIn = () => {
         //signin with provider (googleAuth from firebase.js)
         auth.signInWithPopup(provider)
-            .then((result) => console.log(result))
+            .then((result) => {
+                //put info into datalayer
+                dispatch({
+                    //setUsER action
+                    type: actionTypes.SET_USER,
+                    //user is whatever we get back from google
+                    user: result.user,
+                });
+            })
             .catch((error) => alert(error.message));
     };
 
