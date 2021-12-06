@@ -3,6 +3,7 @@ import MoreVert from '@mui/icons-material/MoreVert';
 import { Avatar, IconButton } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
+import SendIcon from '@mui/icons-material/Send';
 import MicIcon from '@mui/icons-material/Mic';
 import { useParams } from 'react-router-dom';
 import './style.css'
@@ -99,10 +100,13 @@ function Chat() {
                         type="text"
                         value={input}
                         onChange={e => setInput(e.target.value)} />
-                    <button
-                        onClick={sendMessage}
-                        type="submit">Send a message
-                    </button>
+                    <IconButton>
+                        <SendIcon
+                            onClick={sendMessage}
+                            type="submit">
+
+                        </SendIcon>
+                    </IconButton>
                 </form>
                 <MicIcon />
             </div>
